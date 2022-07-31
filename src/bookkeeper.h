@@ -17,6 +17,7 @@
 #include "vendor.h"
 #include "payroll.h"
 #include "inventory.h"
+#include "po.h"
 
 #include <iostream>
 
@@ -37,6 +38,10 @@ class bookkeeper {
         void Income_Statement();
         void Payroll();
         void Inventory();
+        void Create_Invoice(invoice i);
+        void Invoice_History();
+        void Create_PO(po p);
+        void PO_History();
 
         void Add_Inventory(inventory i);
 
@@ -50,6 +55,8 @@ class bookkeeper {
         balance_sheet my_balance_sheet;
         payroll_history my_payroll_history;
         inventory_list my_inventory_list;
+        invoice_history my_invoice_history;
+        po_history my_po_history;
 
 };
 
@@ -110,6 +117,30 @@ void bookkeeper::Inventory() {
 
 void bookkeeper::Add_Inventory(inventory i) {
     my_inventory_list.add_inventory(i);
+}
+
+void bookkeeper::Create_Invoice(invoice i) {
+    my_invoice_history.add_invoice(i);
+    my_inventory_list.decrease_quantity(i.get_quantity());
+    my_balance_sheet.add_accounts_receivable(i.total_pay());
+    my_income_statement.add_sales(i.total_pay());
+    my_income_statement.add_cogs(i.get_quantity() * my_inventory_list.get_unit_price());
+}
+
+void bookkeeper::Invoice_History() {
+    cout<<my_invoice_history<<endl;
+}
+
+void bookkeeper::Create_PO(po p) {
+    my_po_history.add_po(p);
+    my_balance_sheet.add_accounts_payable(p.total_pay());
+    my_balance_sheet.add_inventory(p.total_pay());
+    my_inventory_list.decrease_quantity_idx(p.get_quantity(), p.get_vendor_idx());
+
+}
+
+void bookkeeper::PO_History() {
+    cout << my_po_history << endl;
 }
 
 #endif

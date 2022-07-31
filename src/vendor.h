@@ -27,6 +27,18 @@ class vendor {
                    << std::setw(15) << V.zipcode_;
     }
 
+    std::string get_company_name() const {
+        return company_name_;
+    } 
+
+    std::string get_part() const {
+        return part_;
+    }
+
+    float get_price_per_unit() const {
+        return price_per_unit_;
+    }
+
     private:
         std::string company_name_;
         std::string part_;

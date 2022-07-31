@@ -87,6 +87,18 @@ class balance_sheet {
     float const net_worth() const {
         return total_assets() + total_liabilities();
     }
+
+    void add_accounts_receivable(float pay) {
+        account_receivable += pay;
+    }
+
+    void add_accounts_payable(float pay) {
+        account_payable += pay;
+    }
+
+    void add_inventory(float pay) {
+        inventory += pay;
+    }
     
 };
 

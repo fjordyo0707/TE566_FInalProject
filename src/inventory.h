@@ -14,15 +14,30 @@ class inventory {
               price_per_unit_(price_per_unit),
               quantity_(quantity)
     {}
+
     friend std::ostream & operator << (std:: ostream& out, const inventory& I) {
         return out << std::setw(15) << I.part_ 
                    << std::setw(15) << I.price_per_unit_
                    << std::setw(15) << I.quantity_
                    << std::setw(15) << I.value();
     }
+
     float value() const {
         return price_per_unit_ * (float) quantity_;
     }
+
+    float price() const {
+        return price_per_unit_;
+    }
+
+    float quantity() const {
+        return quantity_;
+    }
+
+    void set_quantity(int q) {
+        quantity_ = q;
+    }
+
     private:
     string part_;
     float price_per_unit_;

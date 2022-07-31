@@ -68,6 +68,13 @@ class income_statement {
         return other_income + operating_income()  - income_taxes;
     }
 
+    void add_sales(float s) {
+        sales += s;
+    }
+
+    void add_cogs(float c) {
+        cogs += c;
+    }
 
     
 };

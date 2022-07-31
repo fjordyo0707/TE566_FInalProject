@@ -28,6 +28,10 @@ class customer {
                    << std::setw(10) << C.price_;
     }
 
+    std::string get_company_name() const {
+        return company_name_;
+    }
+
     private:
         std::string company_name_;
         std::string first_name_;

@@ -40,6 +40,10 @@ int main() {
     inventory i10("Windshield", 0.1, 48250);
     inventory i11("Box", 0.05, 48250);
 
+    invoice invo1("7/7/2022", c1.get_company_name(), 500, 2.5);
+
+    po p1("7/10/2022", v2.get_company_name(), v2.get_part(), 10000, v2.get_price_per_unit(), 2);
+
     m_b.Add_Employee(e1);
     m_b.Add_Employee(e2);
     m_b.Add_Customer(c1);
@@ -69,16 +73,28 @@ int main() {
     m_b.Add_Inventory(i10);
     m_b.Add_Inventory(i11);
 
+
+
     m_b.List_Employee();
     m_b.List_Customer();
     m_b.List_Vendor();
     m_b.Balance_Sheet();
     m_b.Income_Statement();
+
     m_b.Pay_Employee(0);
+    
     m_b.Balance_Sheet();
     m_b.Income_Statement();
     m_b.Payroll();
     m_b.Inventory();
+    m_b.Create_Invoice(invo1);
+    m_b.Invoice_History();
+    m_b.Balance_Sheet();
+    m_b.Income_Statement();
+
+    m_b.Create_PO(p1);
+    m_b.PO_History();
+    m_b.Balance_Sheet();
 
     cout<<"End Bookkeeper"<<endl;
     
