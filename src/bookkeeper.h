@@ -16,6 +16,7 @@
 #include "customer.h"
 #include "vendor.h"
 #include "payroll.h"
+#include "inventory.h"
 
 #include <iostream>
 
@@ -35,6 +36,11 @@ class bookkeeper {
         void Balance_Sheet();
         void Income_Statement();
         void Payroll();
+        void Inventory();
+
+        void Add_Inventory(inventory i);
+
+
 
     private:
         employee_list my_employee_list;
@@ -43,6 +49,8 @@ class bookkeeper {
         income_statement my_income_statement;
         balance_sheet my_balance_sheet;
         payroll_history my_payroll_history;
+        inventory_list my_inventory_list;
+
 };
 
 void bookkeeper::Add_Employee(employee e) {
@@ -94,6 +102,14 @@ void bookkeeper::Pay_Employee(int i) {
 
 void bookkeeper::Payroll() {
     cout<<my_payroll_history<<endl;
+}
+
+void bookkeeper::Inventory() {
+    cout<<my_inventory_list<<endl;
+}
+
+void bookkeeper::Add_Inventory(inventory i) {
+    my_inventory_list.add_inventory(i);
 }
 
 #endif

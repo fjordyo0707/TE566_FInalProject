@@ -10,7 +10,6 @@ using std::vector;
 
 class payroll_history {
     public:
-
     friend std::ostream & operator << (std:: ostream& out, const payroll_history& P_H) {
             out << std::setw(15) << "No."
                 << std::setw(15) << "Date Paid"

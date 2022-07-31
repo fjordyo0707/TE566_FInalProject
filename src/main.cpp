@@ -28,6 +28,18 @@ int main() {
     vendor v10("None", "Labor", "", "", "", "", 0.1);
     vendor v11("Mast Packing", "Master Pack", "", "", "", "", 0.02);
 
+    inventory i1("Axles", 0.01, 33000);
+    inventory i2("Screw", 0.02, 48250);
+    inventory i3("Cab Casting", 0.05, 28250);
+    inventory i4("Rims", 0.01, 6000);
+    inventory i5("Mixer", 0.05, 48250);
+    inventory i6("Labor", 0.1, 48000);
+    inventory i7("Tires", 0.02, 6000);
+    inventory i8("Master Pack", 0.02, 48250);
+    inventory i9("Body Casting", 0.1, 48250);
+    inventory i10("Windshield", 0.1, 48250);
+    inventory i11("Box", 0.05, 48250);
+
     m_b.Add_Employee(e1);
     m_b.Add_Employee(e2);
     m_b.Add_Customer(c1);
@@ -45,6 +57,18 @@ int main() {
     m_b.Add_Vendor(v10);
     m_b.Add_Vendor(v11);
 
+    m_b.Add_Inventory(i1);
+    m_b.Add_Inventory(i2);
+    m_b.Add_Inventory(i3);
+    m_b.Add_Inventory(i4);
+    m_b.Add_Inventory(i5);
+    m_b.Add_Inventory(i6);
+    m_b.Add_Inventory(i7);
+    m_b.Add_Inventory(i8);
+    m_b.Add_Inventory(i9);
+    m_b.Add_Inventory(i10);
+    m_b.Add_Inventory(i11);
+
     m_b.List_Employee();
     m_b.List_Customer();
     m_b.List_Vendor();
@@ -54,6 +78,7 @@ int main() {
     m_b.Balance_Sheet();
     m_b.Income_Statement();
     m_b.Payroll();
+    m_b.Inventory();
 
     cout<<"End Bookkeeper"<<endl;
     
