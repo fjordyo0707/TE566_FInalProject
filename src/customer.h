@@ -22,9 +22,9 @@ class customer {
                    << std::setw(15) << C.first_name_ 
                    << std::setw(15) << C.last_name_ 
                    << std::setw(15) << C.address_
-                   << std::setw(10)  << C.city_ 
-                   << std::setw(10) << C.state_ 
-                   << std::setw(10) << C.zipcode_ 
+                   << std::setw(15)  << C.city_ 
+                   << std::setw(15) << C.state_ 
+                   << std::setw(15) << C.zipcode_ 
                    << std::setw(10) << C.price_;
     }
 

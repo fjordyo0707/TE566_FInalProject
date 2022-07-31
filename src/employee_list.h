@@ -7,29 +7,50 @@
 class employee_list {
     public:
         friend std::ostream & operator << (std:: ostream& out, const employee_list& E_L) {
-            out << std::setw(10) << "First Name"
-                   << std::setw(10) << "Last Name"
-                   << std::setw(15) << "Address"
-                   << std::setw(10) << "City"
-                   << std::setw(10) << "State" 
-                   << std::setw(15) << "SSN" 
-                   << std::setw(15) << "Withholding"
-                   << std::setw(10) << "Salary"
-                   <<std::endl;
+            out << std::setw(15) << "No."
+                << std::setw(15) << "First Name"
+                << std::setw(15) << "Last Name"
+                << std::setw(15) << "Address"
+                << std::setw(15) << "City"
+                << std::setw(15) << "State" 
+                << std::setw(15) << "SSN" 
+                << std::setw(15) << "Withholding"
+                << std::setw(15) << "Salary"
+                << std::endl;
             
-            for(const auto & E: E_L.employ_list_) {
-                out<<E<<std::endl;
+            out << "===============================================";
+            out << "===============================================";
+            out << "===============================================";
+            out << std::endl;
+            
+            for(int i = 0 ; i < E_L.employee_list_.size(); ++i) {
+                out<<std::setw(15)<<i<<E_L.employee_list_[i]<<std::endl;
             }
 
             return out;
         }
 
+        int size() {
+            return employee_list_.size();
+        }
+
+        employee get(int i) {
+                return employee_list_[i];
+        }
+
+        void set(int i, employee e) {
+            if( i < this->size())
+                employee_list_[i] = e; 
+            else
+                std::cout<<"idx exceed range"<<std::endl;
+        }
+
         void add_employee(employee e) {
-            employ_list_.emplace_back(e);
+            employee_list_.emplace_back(e);
         }
 
     private:
-        std::vector<employee> employ_list_;
+        std::vector<employee> employee_list_;
 };
 
 #endif

@@ -20,14 +20,22 @@ class employee {
     {}
     
     friend std::ostream & operator << (std:: ostream& out, const employee& E) {
-        return out << std::setw(10) << E.first_name_ 
-                   << std::setw(10) << E.last_name_ 
+        return out << std::setw(15) << E.first_name_ 
+                   << std::setw(15) << E.last_name_ 
                    << std::setw(15) << E.address_ 
-                   << std::setw(10) << E.city_ 
-                   << std::setw(10) << E.state_ 
+                   << std::setw(15) << E.city_ 
+                   << std::setw(15) << E.state_ 
                    << std::setw(15) << E.ssn_ 
                    << std::setw(15) << E.withholding_
-                   << std::setw(10) << E.salary_;
+                   << std::setw(15) << E.salary_;
+    }
+
+    float get_salary() const {
+        return salary_;
+    }
+
+    std::string get_first_name() const {
+        return first_name_;
     }
 
     private:

@@ -3,11 +3,13 @@
 
 #include<iostream>
 #include"customer.h"
+#include <vector>
 
 class customer_list {
     public:
-        friend std::ostream & operator << (std:: ostream& out, const customer_list& E_L) {
-            out << std::setw(15) << "Company Name" 
+        friend std::ostream & operator << (std:: ostream& out, const customer_list& C_L) {
+            out << std::setw(15) << "No."
+                << std::setw(15) << "Company Name" 
                 << std::setw(15) << "First Name" 
                 << std::setw(15) << "Last Name"
                 << std::setw(15) << "Address"
@@ -17,8 +19,13 @@ class customer_list {
                 << std::setw(10) << "Price"
                 << std::endl;
             
-            for(const auto & C: E_L.customer_list_) {
-                out<<C<<std::endl;
+            out << "===============================================";
+            out << "===============================================";
+            out << "===============================================";
+            out << std::endl;
+            
+            for(int i = 0 ; i < C_L.customer_list_.size(); ++i) {
+                out<<std::setw(15)<<i<<C_L.customer_list_[i]<<std::endl;
             }
 
             return out;

@@ -10,11 +10,17 @@
 #include "invoice_history.h"
 #include "inventory_list.h"
 #include "payroll_history.h"
+#include "book_config.h"
 
 #include "employee.h"
 #include "customer.h"
+#include "vendor.h"
+#include "payroll.h"
 
 #include <iostream>
+
+using std::cout;
+using std::endl;
 
 
 class bookkeeper {
@@ -23,12 +29,20 @@ class bookkeeper {
         void Add_Employee(employee e);
         void List_Customer();
         void Add_Customer(customer c);
-
+        void List_Vendor();
+        void Add_Vendor(vendor v);
+        void Pay_Employee(int i);
+        void Balance_Sheet();
+        void Income_Statement();
+        void Payroll();
 
     private:
         employee_list my_employee_list;
         customer_list my_customer_list;
-    
+        vendor_list my_vendor_list;
+        income_statement my_income_statement;
+        balance_sheet my_balance_sheet;
+        payroll_history my_payroll_history;
 };
 
 void bookkeeper::Add_Employee(employee e) {
@@ -45,6 +59,41 @@ void bookkeeper::Add_Customer(customer c) {
 
 void bookkeeper::List_Customer() {
     std::cout<<my_customer_list<<std::endl;
+}
+
+void bookkeeper::Add_Vendor(vendor v) {
+    my_vendor_list.add_vendor(v);
+}
+
+void bookkeeper::List_Vendor() {
+    std::cout<<my_vendor_list<<std::endl;
+}
+
+void bookkeeper::Balance_Sheet() {
+    cout<<my_balance_sheet<<endl;
+}
+
+void bookkeeper::Income_Statement() {
+    cout<<my_income_statement<<endl;
+}
+
+void bookkeeper::Pay_Employee(int i) {
+    employee p_e = my_employee_list.get(i);
+    float salary = p_e.get_salary();
+    float pay_witholding = salary * SALARY_WITHOLDING_RATIO;
+    float pay = salary * (1.0 - SALARY_WITHOLDING_RATIO);
+
+    my_balance_sheet.cash -= salary;
+
+    my_income_statement.payroll += pay;
+    my_income_statement.payroll_witholding += pay_witholding;
+
+    payroll employee_pay("5/7/2022", p_e.get_first_name(), pay, pay_witholding);
+    my_payroll_history.add_payroll(employee_pay);
+}
+
+void bookkeeper::Payroll() {
+    cout<<my_payroll_history<<endl;
 }
 
 #endif
